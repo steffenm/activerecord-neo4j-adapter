@@ -1,3 +1,4 @@
+require 'neography'
 require 'neography/node'
 require 'active_record/connection_adapters/graph/definitions/model_definition'
 require 'neo4j/result'

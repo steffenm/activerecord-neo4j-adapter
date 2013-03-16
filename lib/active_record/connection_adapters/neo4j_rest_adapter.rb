@@ -5,8 +5,10 @@ require 'active_record/connection_adapters/neo4j/sql/graph_handler'
 module ActiveRecord
   class Base
     def self.neo4j_rest_connection(config)
-      Neography::Config.server = config[:host] if config[:host]
-      Neography::Config.port = config[:port] if config[:port]
+      Neography.configure do |c|
+        c.server = config[:host] if config[:host]
+        c.port = config[:port] if config[:port]
+      end
 
       ConnectionAdapters::Neo4jRestAdapter.new(Neography::Rest.new, logger, config)
     end
